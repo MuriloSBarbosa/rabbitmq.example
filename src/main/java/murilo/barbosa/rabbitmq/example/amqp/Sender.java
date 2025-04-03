@@ -1,4 +1,4 @@
-package murilo.barbosa.rabbitmq.example;
+package murilo.barbosa.rabbitmq.example.amqp;
 
 import com.github.javafaker.Faker;
 import java.time.Instant;
@@ -7,22 +7,20 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import murilo.barbosa.rabbitmq.example.BookDto;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
 @Slf4j
 public class Sender {
 
     private final RabbitTemplate rabbitTemplate;
 
-    @Scheduled(fixedDelay = 5000, initialDelay = 500)
+    //    @Scheduled(fixedDelay = 5000, initialDelay = 500)
     public void sendNewMovie() {
         var movie = randomMovie();
         log.info("Sending movie: {}", movie);
-        rabbitTemplate.convertAndSend(AmqpConfig.queueName, movie);
+        rabbitTemplate.convertAndSend(AmqpConfig.QUEUE_NAME, movie);
     }
 
     private BookDto randomMovie() {

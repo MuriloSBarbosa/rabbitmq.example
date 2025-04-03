@@ -2,9 +2,11 @@ package murilo.barbosa.rabbitmq.example;
 
 import java.time.LocalDate;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
+@NoArgsConstructor
 @Setter
 public class BookDto {
 
