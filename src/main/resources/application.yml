@@ -23,6 +23,6 @@ spring:
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: ${RABBITMQ_PORT:5672}
-    username: ${RABBITMQ_USERNAME:rabbitmq}
-    password: ${RABBITMQ_PASSWORD:rabbitmq}
+    username: ${RABBITMQ_USERNAME:admin}
+    password: ${RABBITMQ_PASSWORD:admin}
     publisher-confirms: true

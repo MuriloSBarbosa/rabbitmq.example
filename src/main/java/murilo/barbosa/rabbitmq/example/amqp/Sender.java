@@ -8,6 +8,7 @@ import java.time.ZoneId;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import murilo.barbosa.rabbitmq.example.BookDto;
+import murilo.barbosa.rabbitmq.example.config.AmqpConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class Sender {
     public void sendNewMovie() {
         var movie = randomMovie();
         log.info("Sending movie: {}", movie);
-        rabbitTemplate.convertAndSend(AmqpConfig.QUEUE_NAME, movie);
+        rabbitTemplate.convertAndSend(AmqpConfig.BOOK_LOADER_QUEUE, movie);
     }
 
     private BookDto randomMovie() {
